@@ -19,6 +19,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>inbox.jsf</welcome-file>
+        <welcome-file>register.jsf</welcome-file>
     </welcome-file-list>
 </web-app>

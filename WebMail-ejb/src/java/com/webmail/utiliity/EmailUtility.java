@@ -5,9 +5,17 @@
  */
 package com.webmail.utiliity;
 
+import com.webmail.model.User;
+import com.webmail.storage.StoragePathEnum;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 import javax.mail.Folder;
@@ -16,7 +24,6 @@ import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
-import org.hibernate.validator.internal.util.logging.Messages;
 
 /**
  *
@@ -24,6 +31,31 @@ import org.hibernate.validator.internal.util.logging.Messages;
  */
 public class EmailUtility {
 
+    public static final String FILE_PATH = StoragePathEnum.EMAIL_URI.getPath();
+    public static File FILE = new File(FILE_PATH);
+    public static final String DATE_PATTERN = "MM/dd/yyyy";
+
+    public static boolean addUser(User user) throws IOException {
+        boolean added = false;
+        ObjectOutputStream out = null;
+        try {
+            if (!FILE.exists()) {
+                out = new ObjectOutputStream(new FileOutputStream(FILE));
+            } else {
+                out = new AppendableObjectOutputStream(new FileOutputStream(FILE, true));
+            }
+            out.writeObject(user);
+            added = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+        }
+        return added;
+    }
+    
     public static List<Message> getInbox(String username, String password) {
 
         String host = "pop.gmail.com";
@@ -70,6 +102,30 @@ public class EmailUtility {
             e.printStackTrace();
         }
         return messagesList;
+    }
+    
+    private static class AppendableObjectOutputStream extends ObjectOutputStream {
+
+        public AppendableObjectOutputStream(OutputStream out) throws IOException {
+            super(out);
+        }
+
+        @Override
+        protected void writeStreamHeader() throws IOException {
+            reset();
+        }
+    }
+
+    private static class AppendableObjectInputStream extends ObjectInputStream {
+
+        public AppendableObjectInputStream(InputStream in) throws IOException {
+            super(in);
+        }
+
+        @Override
+        protected void readStreamHeader() throws IOException {
+
+        }
     }
 
 }

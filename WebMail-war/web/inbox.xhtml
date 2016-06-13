@@ -8,9 +8,9 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:dataTable value="#{emailMB.inbox}" var="mail">
-                <p:column>#{mail.subject.toString()}</p:column>
-            </p:dataTable>
+            <p:dataGrid columns="1" value="#{emailMB.inbox}" var="mail">
+                ${mail.subject}
+            </p:dataGrid>
         </h:form>
     </h:body>
 </html>
