@@ -13,22 +13,22 @@ import java.io.Serializable;
  */
 public class Setting implements Serializable {
 
-    private WordFilter preferedWordFiltering;
+    private WordFilterEnum preferedWordFiltering;
     private String emailSignature;
     
     public Setting()
     {
         
     }
-    public Setting(WordFilter preferedWordFiltering) {
+    public Setting(WordFilterEnum preferedWordFiltering) {
         this.preferedWordFiltering = preferedWordFiltering;
     }
 
-    public WordFilter getPreferedWordFiltering() {
+    public WordFilterEnum getPreferedWordFiltering() {
         return preferedWordFiltering;
     }
 
-    public void setPreferedWordFiltering(WordFilter preferedWordFiltering) {
+    public void setPreferedWordFiltering(WordFilterEnum preferedWordFiltering) {
         this.preferedWordFiltering = preferedWordFiltering;
     }
 

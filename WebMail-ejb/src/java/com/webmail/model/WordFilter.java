@@ -5,10 +5,41 @@
  */
 package com.webmail.model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author Jennyfer
+ * @author VictorPineda
  */
-public enum WordFilter {
-    MASKNG, EXCLUDE
+public class WordFilter implements Serializable {
+    
+    private int id;
+    private String word;
+
+    public WordFilter() {
+    }
+    
+
+    public WordFilter(int id, String word) {
+        this.id = id;
+        this.word = word;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+    
+    
 }

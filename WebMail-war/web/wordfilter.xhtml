@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+
+    <body>
+
+        <ui:composition template="./WebMailTemplate.xhtml">
+
+            <ui:define name="top">
+                top
+            </ui:define>
+
+            <ui:define name="left">
+                left
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="form1">
+                    <p:growl id="messages" showDetail="true"/>
+                    <p:panel header="Word Item" style="width: 400px;"> 
+                        <p:panelGrid columns="2">
+                            <h:outputLabel for="item" value="Word: " />
+                            <p:inputText  value="#{wordFilterMB.wordfilter.word}"/>
+                            <f:facet name="footer">
+                                <h:commandButton value="Add Item" action="#{wordFilterMB.addAction()}"/>
+                            </f:facet>
+                        </p:panelGrid>
+                        <p:spacer height="30px;"/>
+                        <p:dataTable value="#{wordFilterMB.filteredWordList}" var="word"  widgetVar="50" style="width: 60px;" editable="true">
+                            <f:facet name="header">  
+                                Word List
+                            </f:facet>
+                            <p:ajax event="rowEdit" listener="#{wordFilterMB.onEdit}" update=":form1:messages" />  
+                            <p:ajax event="rowEditCancel" listener="#{wordFilterMB.onCancel}" update=":form1:messages" /> 
+                            <p:column>
+                                <f:facet name="header">  
+                                    <h:outputText value="ID" />  
+                                </f:facet>
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{word.id}" />  
+                                    </f:facet>  
+                                </p:cellEditor> 
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">  
+                                    <h:outputText value="Words" />  
+                                </f:facet>
+                                <p:cellEditor>  
+                                    <f:facet name="output">  
+                                        <h:outputText value="#{word.word}" />  
+                                    </f:facet>  
+                                    <f:facet name="input">  
+                                        <p:inputText value="#{word.word}" style="width:100%"/>  
+                                    </f:facet>  
+                                </p:cellEditor>
+                            </p:column>              
+                            <p:column headerText="Options" style="width:50px">  
+                                <p:rowEditor />  
+                            </p:column> 
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
