@@ -50,7 +50,7 @@ public class Utility implements IUtility {
     }
 
     @Override
-    public boolean modifyUser(User user) throws IOException  {
+    public boolean modifyUser(User user) throws IOException {
         boolean isUpdated = false;
         try {
             // get all users
@@ -66,7 +66,7 @@ public class Utility implements IUtility {
                 index++;
             }
             // insert users into ser file by creating new
-            createUserSerFile(userList);
+            createUserSerializedFile(userList);
             isUpdated = true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,7 +76,26 @@ public class Utility implements IUtility {
 
     @Override
     public boolean deleteUser(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean isDeleted = false;
+        try {
+            // get all users
+            List<User> userList = getAllUser();
+            int index = 0;
+            // update user details
+            for (User u : userList) {
+                if (u.getUsername().equals(user.getUsername())) {
+                    userList.remove(index);
+                    break;
+                }
+                index++;
+            }
+            // insert users into ser file by creating new
+            createUserSerializedFile(userList);
+            isDeleted = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return isDeleted;
     }
 
     @Override
@@ -128,8 +147,8 @@ public class Utility implements IUtility {
         }
         return userList;
     }
-   
-    public boolean createUserSerFile(List<User> userList) {
+
+    public boolean createUserSerializedFile(List<User> userList) {
         boolean isCreated = false;
         ObjectOutputStream out = null;
         FILE.delete();
@@ -149,9 +168,7 @@ public class Utility implements IUtility {
         }
         return isCreated;
     }
-    
-    
-    
+
     private class AppendableObjectOutputStream extends ObjectOutputStream {
 
         public AppendableObjectOutputStream(OutputStream out) throws IOException {
@@ -176,4 +193,3 @@ public class Utility implements IUtility {
         }
     }
 }
-
