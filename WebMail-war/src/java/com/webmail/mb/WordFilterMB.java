@@ -31,7 +31,7 @@ public class WordFilterMB implements Serializable {
     public WordFilterMB() {
     }
     
-    WordFilter wordfilter = new WordFilter();
+   private WordFilter wordfilter = new WordFilter();
 
     public WordFilter getWordfilter() {
         return wordfilter;
@@ -46,19 +46,21 @@ public class WordFilterMB implements Serializable {
     }
     
        public String addAction() throws IOException {
-        WordFilter wordFilter = new WordFilter(WordUtility.getAllWords().size()+1, getWordfilter().getWord());
-        boolean isAdded = WordUtility.addWord(wordFilter);
+        wordfilter = new WordFilter(WordUtility.getAllWords().size()+1, getWordfilter().getWord());
+        boolean isAdded = WordUtility.addWord(wordfilter);
         return null;
     }
     public void onEdit(RowEditEvent event) {  
-        FacesMessage msg = new FacesMessage("Word Edited",((WordFilter) event.getObject()).getWord());  
+        FacesMessage msg = new FacesMessage("Succesffully edited!" + ((WordFilter) event.getObject()).getWord());  
         FacesContext.getCurrentInstance().addMessage(null, msg);  
     }  
        
     public void onCancel(RowEditEvent event) {  
-        FacesMessage msg = new FacesMessage("Operation Cancelled");   
+        FacesMessage msg = new FacesMessage("Successfully deleted!");   
         FacesContext.getCurrentInstance().addMessage(null, msg); 
         WordUtility.deleteWord((WordFilter) event.getObject());
     } 
+    
+   
     
 }
