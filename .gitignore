@@ -5,3 +5,5 @@
 /WebMail-ejb/dist/
 /WebMail-ejb/build/
 /dist/
+/WebMail-war/build/
+/WebMail-war/dist/
