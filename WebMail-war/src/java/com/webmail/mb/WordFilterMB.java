@@ -46,7 +46,14 @@ public class WordFilterMB implements Serializable {
     }
     
        public String addAction() throws IOException {
-        wordfilter = new WordFilter(WordUtility.getAllWords().size()+1, getWordfilter().getWord());
+         
+           Integer id = 1;
+           int index = WordUtility.getAllWords().size()-1;
+           if (WordUtility.getAllWords().size() > 0)
+           {
+           id = WordUtility.getAllWords().get(index).getId() +1 ;
+           }
+        wordfilter = new WordFilter(id, getWordfilter().getWord());
         boolean isAdded = WordUtility.addWord(wordfilter);
         return null;
     }
