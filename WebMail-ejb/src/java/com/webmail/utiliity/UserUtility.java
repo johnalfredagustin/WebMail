@@ -28,7 +28,7 @@ public class UserUtility {
     public static File FILE = new File(FILE_PATH);
     public static final String DATE_PATTERN = "MM/dd/yyyy";
 
-    public boolean addUser(User user) throws IOException {
+    public static boolean addUser(User user) throws IOException {
         boolean added = false;
         ObjectOutputStream out = null;
         try {
@@ -49,7 +49,7 @@ public class UserUtility {
         return added;
     }
 
-    public boolean modifyUser(User user) throws IOException {
+    public static boolean modifyUser(User user) throws IOException {
         boolean isUpdated = false;
         try {
             // get all users
@@ -73,7 +73,7 @@ public class UserUtility {
         return isUpdated;
     }
 
-    public boolean deleteUser(User user) {
+    public static boolean deleteUser(User user) {
         boolean isDeleted = false;
         try {
             // get all users
@@ -123,7 +123,7 @@ public class UserUtility {
         return user;
     }
 
-    public List<User> getAllUser() throws IOException {
+    public static List<User> getAllUser() throws IOException {
         ObjectInputStream ois = null;
         List<User> userList = new ArrayList<>();
         User user = null;
@@ -145,7 +145,7 @@ public class UserUtility {
         return userList;
     }
 
-    public boolean createUserSerializedFile(List<User> userList) {
+    public static boolean createUserSerializedFile(List<User> userList) {
         boolean isCreated = false;
         ObjectOutputStream out = null;
         FILE.delete();
@@ -166,7 +166,7 @@ public class UserUtility {
         return isCreated;
     }
 
-    private class AppendableObjectOutputStream extends ObjectOutputStream {
+    private static class AppendableObjectOutputStream extends ObjectOutputStream {
 
         public AppendableObjectOutputStream(OutputStream out) throws IOException {
             super(out);
