@@ -5,14 +5,18 @@
  */
 package com.webmail.utiliity;
 
+import com.webmail.model.User;
+import java.io.IOException;
+
 /**
  *
  * @author John Agustin
  */
 public interface IUtility {
     
-    public boolean add(Object obj);
-    public boolean modify(Object obj);
-    public boolean delete(Object obj);
+    public boolean addUser(User user) throws IOException;
+    public boolean modifyUser(User user) throws IOException;
+    public boolean deleteUser(User user) throws IOException;
+    public User login(String username, String password) throws IOException;
     
 }
