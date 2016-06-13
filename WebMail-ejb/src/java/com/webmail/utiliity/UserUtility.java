@@ -96,7 +96,7 @@ public class UserUtility {
         return isDeleted;
     }
 
-    public User login(String username, String password) throws IOException {
+    public static User login(String username, String password) throws IOException {
         ObjectInputStream ois = null;
         User user = null;
         try {

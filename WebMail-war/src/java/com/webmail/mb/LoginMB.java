@@ -5,6 +5,7 @@
  */
 package com.webmail.mb;
 
+import com.webmail.ejb.UserSessionBean;
 import com.webmail.model.User;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -14,34 +15,36 @@ import java.io.Serializable;
  *
  * @author Fri4A
  */
+// CDI
 @Named(value = "loginMB")
 @SessionScoped
 public class LoginMB implements Serializable {
 
-    private User user;
-    private String username;
-    private String password;
+    private UserSessionBean userSessionBean;
+    private User loginUser;
 
-    public String getUsername() {
-        return username;
+    public UserSessionBean getUserSessionBean() {
+        return userSessionBean;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserSessionBean(UserSessionBean userSessionBean) {
+        this.userSessionBean = userSessionBean;
     }
 
-    public String getPassword() {
-        return password;
+    public User getLoginUser() {
+        return loginUser;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setLoginUser(User loginUser) {
+        this.loginUser = loginUser;
     }
+
+    
     public LoginMB() {
     }
-    
-    public User login(){
-     return user;
+
+    public User login() {
+        return userSessionBean.login();
     }
-    
+
 }

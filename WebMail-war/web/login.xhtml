@@ -11,10 +11,10 @@
         <h:form>
             
                 Username: <br/>
-                <p:inputText value="#{loginMB.username}"/> <br/> <BR/>
+                <p:inputText value="#{loginMB.loginUser.username}"/> <br/> <BR/>
                 Password: <br/>
-                <p:inputText value="#{loginMB.password}"/> <br/> <BR/>
-                <p:commandButton value="Sign in" style="padding: 4px 25px" /> <br/> <BR/>
+                <p:inputText value="#{loginMB.loginUser.password}"/> <br/> <BR/>
+                <p:commandButton value="Sign in" style="padding: 4px 25px"  value="#{loginMB.login}"/> <br/> <BR/>
                 <p:link value="Sign up" />
             
         </h:form>

@@ -6,10 +6,12 @@
 package com.webmail.mb;
 
 import com.webmail.model.User;
+import com.webmail.utiliity.UserUtility;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -17,9 +19,9 @@ import javax.enterprise.context.SessionScoped;
  */
 @Named(value = "userMB")
 @SessionScoped
-public class UserMB implements Serializable{
+public class UserMB implements Serializable {
 
-    User user;
+    User user = new User();
 
     public User getUser() {
         return user;
@@ -28,7 +30,13 @@ public class UserMB implements Serializable{
     public void setUser(User user) {
         this.user = user;
     }
+
     public UserMB() {
     }
-    
+
+    public String addAction() throws IOException {
+
+        boolean isAdded = UserUtility.addUser(user);
+        return null;
+    }
 }

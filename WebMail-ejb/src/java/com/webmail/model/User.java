@@ -28,6 +28,10 @@ public class User implements Serializable {
         this.isAdmin = isAdmin;
         this.setting = setting;
     }
+  
+        public User() {
+       
+    }
 
     public String getUsername() {
         return username;
