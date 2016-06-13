@@ -12,6 +12,7 @@ import java.util.List;
  * @author John Agustin
  */
 public class Email {
+    
     private String from;
     private List<String> to;
     private List<String> cc;

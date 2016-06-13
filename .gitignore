@@ -1,3 +1,7 @@
 /nbproject/private/
 /WebMail-ejb/nbproject/private/
 /WebMail-war/nbproject/private/
+/build/
+/WebMail-ejb/dist/
+/WebMail-ejb/build/
+/dist/
