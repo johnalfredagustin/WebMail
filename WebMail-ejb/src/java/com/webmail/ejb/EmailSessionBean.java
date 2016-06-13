@@ -14,7 +14,10 @@ import javax.ejb.LocalBean;
  */
 @Stateless
 @LocalBean
-public class NewSessionBean {
+public class EmailSessionBean {
 
+    public void sendEmail() {
+        
+    }
     
 }
