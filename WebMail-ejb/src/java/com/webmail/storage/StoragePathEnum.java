@@ -5,15 +5,17 @@
  */
 package com.webmail.storage;
 
+import java.nio.file.Paths;
+
 /**
  *
  * @author John Agustin
  */
 public enum StoragePathEnum {
     
-    USER_URI(System.getProperty("user.dir") + "\\src\\com\\webmail\\storage\\User.ser"),
-    WORD_FILTER_URI(System.getProperty("user.dir") + "\\src\\com\\webmail\\storage\\WordFilter.ser"),
-    EMAIL_URI(System.getProperty("user.dir") + "\\src\\com\\webmail\\storage\\Email.ser");
+    USER_URI("User.ser"),
+    WORD_FILTER_URI("WordFilter.ser"),
+    EMAIL_URI("Email.ser");
 
     private String path;
 

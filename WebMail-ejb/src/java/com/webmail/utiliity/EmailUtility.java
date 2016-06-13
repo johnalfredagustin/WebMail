@@ -55,6 +55,7 @@ public class EmailUtility {
 
             // retrieve the messages from the folder in an array and print it
             Message[] messages = emailFolder.getMessages();
+            
             messagesList = Arrays.asList(messages);
 
             //close the store and folder objects

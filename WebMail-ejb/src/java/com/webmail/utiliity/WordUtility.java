@@ -7,6 +7,7 @@ package com.webmail.utiliity;
 
 import com.webmail.model.User;
 import com.webmail.model.WordFilter;
+import com.webmail.storage.StoragePathEnum;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -23,7 +24,7 @@ import java.util.List;
  * @author VictorPineda
  */
 public class WordUtility {
-    public static final String FILE_PATH = System.getProperty("filteredwords.dir") + "\\src\\com\\webmail\\storage\\filteredwords.ser";
+    public static final String FILE_PATH = StoragePathEnum.WORD_FILTER_URI.getPath();
     public static File FILE = new File(FILE_PATH);
 
 
