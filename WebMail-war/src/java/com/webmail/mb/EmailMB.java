@@ -5,9 +5,13 @@
  */
 package com.webmail.mb;
 
+import com.webmail.ejb.EmailSessionBean;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.mail.Message;
 
 /**
  *
@@ -17,10 +21,17 @@ import java.io.Serializable;
 @SessionScoped
 public class EmailMB implements Serializable {
 
-    /**
-     * Creates a new instance of EmailMB
-     */
+    @EJB
+    EmailSessionBean emailSessionBean;
+    
     public EmailMB() {
+    }
+    
+    public List<Message> getInbox() {
+        
+        List<Message> temp = emailSessionBean.getInbox();
+        
+        return emailSessionBean.getInbox();
     }
     
 }

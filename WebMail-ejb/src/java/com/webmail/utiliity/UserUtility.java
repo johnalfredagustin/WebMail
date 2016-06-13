@@ -6,6 +6,7 @@
 package com.webmail.utiliity;
 
 import com.webmail.model.User;
+import com.webmail.storage.StoragePathEnum;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,14 +22,13 @@ import java.util.List;
  *
  * @author John Agustin
  */
-public class Utility implements IUtility {
+public class UserUtility {
 
-    public static final String FILE_PATH = System.getProperty("user.dir") + "\\src\\com\\webmail\\storage\\User.ser";
+    public static final String FILE_PATH = StoragePathEnum.USER_URI.getPath();
     public static File FILE = new File(FILE_PATH);
     public static final String DATE_PATTERN = "MM/dd/yyyy";
 
-    @Override
-    public boolean addUser(User user) throws IOException {
+    public static boolean addUser(User user) throws IOException {
         boolean added = false;
         ObjectOutputStream out = null;
         try {
@@ -49,8 +49,7 @@ public class Utility implements IUtility {
         return added;
     }
 
-    @Override
-    public boolean modifyUser(User user) throws IOException {
+    public static boolean modifyUser(User user) throws IOException {
         boolean isUpdated = false;
         try {
             // get all users
@@ -74,8 +73,7 @@ public class Utility implements IUtility {
         return isUpdated;
     }
 
-    @Override
-    public boolean deleteUser(User user) {
+    public static boolean deleteUser(User user) {
         boolean isDeleted = false;
         try {
             // get all users
@@ -98,7 +96,6 @@ public class Utility implements IUtility {
         return isDeleted;
     }
 
-    @Override
     public User login(String username, String password) throws IOException {
         ObjectInputStream ois = null;
         User user = null;
@@ -126,7 +123,7 @@ public class Utility implements IUtility {
         return user;
     }
 
-    public List<User> getAllUser() throws IOException {
+    public static List<User> getAllUser() throws IOException {
         ObjectInputStream ois = null;
         List<User> userList = new ArrayList<>();
         User user = null;
@@ -148,7 +145,7 @@ public class Utility implements IUtility {
         return userList;
     }
 
-    public boolean createUserSerializedFile(List<User> userList) {
+    public static boolean createUserSerializedFile(List<User> userList) {
         boolean isCreated = false;
         ObjectOutputStream out = null;
         FILE.delete();
@@ -169,7 +166,7 @@ public class Utility implements IUtility {
         return isCreated;
     }
 
-    private class AppendableObjectOutputStream extends ObjectOutputStream {
+    private static class AppendableObjectOutputStream extends ObjectOutputStream {
 
         public AppendableObjectOutputStream(OutputStream out) throws IOException {
             super(out);
