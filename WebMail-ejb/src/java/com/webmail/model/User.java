@@ -20,9 +20,11 @@ public class User implements Serializable {
     private boolean isAdmin;
     private Setting setting;
 
-    public User(String username, String password, boolean isAdmin, Setting setting) {
+    public User(String name, String username, String password, String emailAddress, boolean isAdmin, Setting setting) {
+        this.name = name;
         this.username = username;
         this.password = password;
+        this.emailAddress = emailAddress;
         this.isAdmin = isAdmin;
         this.setting = setting;
     }
@@ -58,4 +60,22 @@ public class User implements Serializable {
     public void setSetting(Setting setting) {
         this.setting = setting;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+    
+    
 }
