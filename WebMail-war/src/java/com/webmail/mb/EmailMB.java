@@ -22,15 +22,12 @@ import javax.mail.Message;
 public class EmailMB implements Serializable {
 
     @EJB
-    EmailSessionBean emailSessionBean;
+    private EmailSessionBean emailSessionBean;
     
     public EmailMB() {
     }
     
     public List<Message> getInbox() {
-        
-        List<Message> temp = emailSessionBean.getInbox();
-        
         return emailSessionBean.getInbox();
     }
     
