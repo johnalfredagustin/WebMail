@@ -5,6 +5,7 @@
  */
 package com.webmail.mb;
 
+import com.webmail.model.User;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -17,6 +18,7 @@ import java.io.Serializable;
 @SessionScoped
 public class LoginMB implements Serializable {
 
+    private User user;
     private String username;
     private String password;
 
@@ -36,6 +38,10 @@ public class LoginMB implements Serializable {
         this.password = password;
     }
     public LoginMB() {
+    }
+    
+    public User login(){
+     return user;
     }
     
 }
