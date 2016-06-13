@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Email Creation</title>
+    </h:head>
+    <h:body>
+        <h2>Create your account</h2>
+        <h:form>
+            Name:<br/>
+            <p:inputText value="#{userMB.user.name}"/> <br/>
+            Choose your username: <br/>
+            <p:inputText value="#{userMB.user.username}"/> <br/>
+             Create a password: <br/>
+             <p:inputText value="#{userMB.user.password}"/> <br/>
+             Current email address: <br/>
+             <p:inputText value="#{userMB.user.emailAddress}"/> <br/> <BR/>
+            
+            <p:commandButton value="register" style="padding: 3px 28px"/>
+             
+        </h:form>
+    </h:body>
+</html>
+
