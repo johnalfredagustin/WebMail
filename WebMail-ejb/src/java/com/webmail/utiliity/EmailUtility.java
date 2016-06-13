@@ -5,6 +5,10 @@
  */
 package com.webmail.utiliity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -12,6 +16,7 @@ import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Store;
+import org.hibernate.validator.internal.util.logging.Messages;
 
 /**
  *
@@ -19,13 +24,21 @@ import javax.mail.Store;
  */
 public class EmailUtility {
 
-    public static void check(String host, String storeType, String user,
-            String password) {
+    public static List<Message> getInbox(String username, String password) {
+
+        String host = "pop.gmail.com";
+        String mailStoreType = "pop3";
+        String username1 = "waa.webmail.service.acc@gmail.com";
+        String password1 = "password1234!";
+
+        return check(host, mailStoreType, username1, password1);
+
+    }
+
+    public static List<Message> check(String host, String storeType, String user, String password) {
+        List<Message> messagesList = new ArrayList<>();
         try {
-
-            //create properties field
             Properties properties = new Properties();
-
             properties.put("mail.pop3.host", host);
             properties.put("mail.pop3.port", "995");
             properties.put("mail.pop3.starttls.enable", "true");
@@ -42,21 +55,11 @@ public class EmailUtility {
 
             // retrieve the messages from the folder in an array and print it
             Message[] messages = emailFolder.getMessages();
-            System.out.println("messages.length---" + messages.length);
-
-            for (int i = 0, n = messages.length; i < n; i++) {
-                Message message = messages[i];
-                System.out.println("---------------------------------");
-                System.out.println("Email Number " + (i + 1));
-                System.out.println("Subject: " + message.getSubject());
-                System.out.println("From: " + message.getFrom()[0]);
-                System.out.println("Text: " + message.getContent().toString());
-
-            }
+            messagesList = Arrays.asList(messages);
 
             //close the store and folder objects
-            emailFolder.close(false);
-            store.close();
+//            emailFolder.close(false);
+//            store.close();
 
         } catch (NoSuchProviderException e) {
             e.printStackTrace();
@@ -65,16 +68,7 @@ public class EmailUtility {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return messagesList;
     }
 
-    public static void main(String[] args) {
-
-        String host = "pop.gmail.com";// change accordingly
-        String mailStoreType = "pop3";
-        String username = "yourmail@gmail.com";// change accordingly
-        String password = "*****";// change accordingly
-
-        check(host, mailStoreType, username, password);
-
-    }
 }
