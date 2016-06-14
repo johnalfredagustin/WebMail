@@ -5,13 +5,14 @@
  */
 package com.webmail.mb;
 
+import com.webmail.ejb.UserSessionBean;
 import com.webmail.model.User;
 import com.webmail.utiliity.UserUtility;
 import java.io.IOException;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 
 /**
  *
@@ -21,14 +22,15 @@ import javax.inject.Inject;
 @SessionScoped
 public class UserMB implements Serializable {
 
-    User user = new User();
+    @EJB
+    UserSessionBean userBean;
 
-    public User getUser() {
-        return user;
+    public UserSessionBean getUserBean() {
+        return userBean;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserBean(UserSessionBean user) {
+        this.userBean = user;
     }
 
     public UserMB() {
@@ -36,7 +38,7 @@ public class UserMB implements Serializable {
 
     public String addAction() throws IOException {
 
-        boolean isAdded = UserUtility.addUser(user);
+        boolean isAdded = UserUtility.addUser(userBean.getRegisteredUser());
         return null;
     }
 }

@@ -39,6 +39,7 @@ public class UserUtility {
             }
             out.writeObject(user);
             added = true;
+            System.out.println("User added");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

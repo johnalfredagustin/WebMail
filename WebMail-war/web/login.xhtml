@@ -11,9 +11,9 @@
         <h:form>
             
                 Username: <br/>
-                <p:inputText value="#{loginMB.loginUser.username}"/> <br/> <BR/>
+                <p:inputText value="#{loginMB.userSessionBean.activeUser.username}"/> <br/> <BR/>
                 Password: <br/>
-                <p:inputText value="#{loginMB.loginUser.password}"/> <br/> <BR/>
+                <p:inputText value="#{loginMB.userSessionBean.activeUser.password}"/> <br/> <BR/>
                 <p:commandButton value="Sign in" style="padding: 4px 25px"  value="#{loginMB.login}"/> <br/> <BR/>
                 <p:link value="Sign up" />
             

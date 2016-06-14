@@ -21,9 +21,31 @@ import javax.ejb.Stateful;
 @LocalBean
 public class UserSessionBean {
 
+    private User activeUser;
+    private User registeredUser;
+
+    public User getRegisteredUser() {
+        return registeredUser;
+    }
+
+    public void setRegisteredUser(User registeredUser) {
+        this.registeredUser = registeredUser;
+    }
+
+    public User getActiveUser() {
+        return activeUser;
+    }
+
+    public void setActiveUser(User user) {
+        this.activeUser = user;
+    }
+    
+    
+    
     public User login(){
         try {
-            return UserUtility.login(" ", " ");
+            activeUser = UserUtility.login(" ", " ");
+            return activeUser;
         } catch (IOException ex) {
             ex.printStackTrace();
         }

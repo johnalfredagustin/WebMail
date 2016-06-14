@@ -10,13 +10,13 @@
         <h2>Create your account</h2>
         <h:form>
             Name:<br/>
-            <p:inputText value="#{userMB.user.name}"/> <br/>
+            <p:inputText value="#{userMB.userBean.registeredUser.name}"/> <br/>
             Choose your username: <br/>
-            <p:inputText value="#{userMB.user.username}"/> <br/>
+            <p:inputText value="#{userMB.userBean.registeredUser.username}"/> <br/>
              Create a password: <br/>
-             <p:inputText value="#{userMB.user.password}"/> <br/>
+             <p:password value="#{userMB.userBean.registeredUser.password}"/> <br/>
              Current email address: <br/>
-             <p:inputText value="#{userMB.user.emailAddress}"/> <br/> <BR/>
+             <p:inputText value="#{userMB.userBean.registeredUser.emailAddress}"/> <br/> <BR/>
             
              <p:commandButton value="register" action="#{userMB.addAction()}" style="padding: 3px 28px"/>
              

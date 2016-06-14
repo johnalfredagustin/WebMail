@@ -10,6 +10,7 @@ import com.webmail.model.User;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.ejb.EJB;
 
 /**
  *
@@ -20,8 +21,8 @@ import java.io.Serializable;
 @SessionScoped
 public class LoginMB implements Serializable {
 
+    @EJB
     private UserSessionBean userSessionBean;
-    private User loginUser;
 
     public UserSessionBean getUserSessionBean() {
         return userSessionBean;
@@ -31,16 +32,7 @@ public class LoginMB implements Serializable {
         this.userSessionBean = userSessionBean;
     }
 
-    public User getLoginUser() {
-        return loginUser;
-    }
-
-    public void setLoginUser(User loginUser) {
-        this.loginUser = loginUser;
-    }
-
-    
-    public LoginMB() {
+       public LoginMB() {
     }
 
     public User login() {
